@@ -14,3 +14,15 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+var ready;
+ready = function () {
+  $('input[type=date]').each(function() {
+    this.valueAsDate = new Date();
+  });
+
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
+$(document).on("page:change", ready);
