@@ -21,6 +21,18 @@ ready = function () {
     this.valueAsDate = new Date();
   });
 
+  $('#transactions tr').hover(
+    function() {
+      $( this ).find('.remove_btn').show();
+    }, function() {
+      $( this ).find('.remove_btn').hide();
+    }
+  );
+
+  $('.remove_btn').click(function () {
+    $(this).parent().parent().removeClass('success').addClass('danger');
+  });
+
 };
 
 $(document).ready(ready);

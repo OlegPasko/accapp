@@ -17,3 +17,8 @@
 body {
     padding-top: 10px;
 }
+
+.remove_btn {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}

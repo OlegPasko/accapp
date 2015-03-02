@@ -11,4 +11,9 @@ class TransactionsController < ApplicationController
       render js: "alert('Check data')";
     end
   end
+
+  def destroy
+    @transaction = Transaction.find(params[:id])
+    @transaction.destroy
+  end
 end

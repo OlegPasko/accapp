@@ -1,6 +1,10 @@
-<tr class="<%= 'success' if transaction.type == 'income' %>">
+<tr class="<%= 'success' if transaction.type == 'income' %>", data-id="<%= transaction.id %>" >
   <td><%= transaction.date %></td>
-  <td><%= transaction.amount %></td>
+  <td><%= transaction.amount if transaction.type == 'income' %></td>
+  <td><%= transaction.amount if transaction.type == 'expense' %></td>
   <td></td>
-  <td><%= transaction.comment %></td>
+  <td><%= transaction.comment %>
+    <%= link_to 'del', transaction_path(transaction), method: :delete, remote: true,
+                class: 'remove_btn pull-right btn btn-danger btn-xs', style: 'display: none' %>
+  </td>
 </tr>
