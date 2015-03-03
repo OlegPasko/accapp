@@ -16,19 +16,22 @@
 //= require_tree .
 
 var ready;
+
+function transactionTrHover() {
+  $('#transactions tr').hover(
+    function () {
+      $(this).find('.remove_btn').show();
+    }, function () {
+      $(this).find('.remove_btn').hide();
+    }
+  );
+}
+
 ready = function () {
   $('input[type=date]').each(function() {
     this.valueAsDate = new Date();
   });
-
-  $('#transactions tr').hover(
-    function() {
-      $( this ).find('.remove_btn').show();
-    }, function() {
-      $( this ).find('.remove_btn').hide();
-    }
-  );
-
+  transactionTrHover();
   $('.remove_btn').click(function () {
     $(this).parent().parent().removeClass('success').addClass('danger');
   });
