@@ -8,7 +8,11 @@
   <td><%= transaction.amount if transaction.type == 'income' %></td>
   <td><%= transaction.amount if transaction.type == 'expense' %></td>
   <td></td>
-  <td></td>
+  <td>
+    <% transaction.tags.each do |tt| %>
+        <span class="label label-primary"><%= link_to tt.name, url_for(params.merge(tagged: tt.name)) %></span>
+    <% end %>
+  </td>
   <td><%= transaction.comment %>
     <%= link_to 'del', transaction_path(transaction), method: :delete, remote: true,
                 class: 'remove_btn pull-right btn btn-danger btn-xs', style: 'display: none' %>

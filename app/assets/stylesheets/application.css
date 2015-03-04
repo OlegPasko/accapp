@@ -22,7 +22,12 @@ body {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
 }
-
+.topmargin {
+    margin-top: 10px;
+}
 .grey {
     color: #cbcbcb;
+}
+.label a, .label a:hover {
+    color: #ffffff;
 }
