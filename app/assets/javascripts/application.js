@@ -27,6 +27,25 @@ function transactionTrHover() {
   );
 }
 
+function refreshTable() {
+  var dtSum = 0,
+    ktSum = 0,
+    monthSum = 0;
+  $('tr[data-id]').each(function () {
+    dtSum += parseInt($(this).data('dt'));
+    ktSum += parseInt($(this).data('kt'));
+    monthSum = dtSum + ktSum;
+    if ($(this).next().data() == undefined || ($(this).next().data('month-name') && $(this).next().data('month-name') != $(this).data('month-name'))) {
+      $(this).after('<tr class="warning"><td><b>' + $(this).data('month-name') +
+      '</b></td><td><span class="grey">' + dtSum + '</span>' +
+      '</td><td><span class="grey">' + ktSum + '</span></td><td><b>' + monthSum + '</b></td><td></td><td></td></tr>');
+      dtSum = 0;
+      ktSum = 0;
+      monthSum = 0; // drop values
+    }
+  });
+}
+
 ready = function () {
   $('input[type=date]').each(function() {
     this.valueAsDate = new Date();
@@ -35,7 +54,7 @@ ready = function () {
   $('.remove_btn').click(function () {
     $(this).parent().parent().removeClass('success').addClass('danger');
   });
-
+  refreshTable();
 };
 
 $(document).ready(ready);

@@ -1,7 +1,13 @@
-<tr class="<%= 'success' if transaction.type == 'income' %>", data-id="<%= transaction.id %>" >
-  <td><%= transaction.date %></td>
+<tr class="<%= 'success' if transaction.type == 'income' %>"
+    data-id="<%= transaction.id %>"
+    data-dt="<%= transaction.type == 'income' ? transaction.amount : 0 %>"
+    data-kt="<%= transaction.type == 'expense' ? transaction.amount : 0 %>"
+    data-month-name="<%= transaction.date.strftime("%B") %>"
+    data-date="<%= transaction.date %>" >
+  <td><%= transaction.date.strftime("%d %b %Y") %></td>
   <td><%= transaction.amount if transaction.type == 'income' %></td>
   <td><%= transaction.amount if transaction.type == 'expense' %></td>
+  <td></td>
   <td></td>
   <td><%= transaction.comment %>
     <%= link_to 'del', transaction_path(transaction), method: :delete, remote: true,
